@@ -2,7 +2,7 @@
 
 <button mat-raised-button color="primary" (click)="toggleMostrar()">Mostrar Lista</button>
 
-<table *ngIf="mostrar">
+<!-- <table *ngIf="mostrar">
   <tr>
     <td>Nombre</td>
     <td>Costo</td>
@@ -11,4 +11,18 @@
     <td>{{producto.nombre}}</td>
     <td>{{producto.costo}}</td>
   </tr>
+</table> -->
+
+<table mat-table [dataSource]="productos" *ngIf="mostrar">
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let p"> {{p.nombre}} </td>
+  </ng-container>
+  <ng-container matColumnDef="costo">
+    <th mat-header-cell *matHeaderCellDef> Costo </th>
+    <td mat-cell *matCellDef="let p"> {{p.costo}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
 </table>

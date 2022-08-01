@@ -23,4 +23,6 @@ export class AppComponent {
     {nombre: "Saco", costo: "Un riñon"},
   ];
 
+  columnsToDisplay = ['nombre', 'costo'];
+
 }
